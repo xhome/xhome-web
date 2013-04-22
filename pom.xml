@@ -27,7 +27,7 @@
 		 -->
 		<dependency>
 			<groupId>org.xhome</groupId>
-			<artifactId>util</artifactId>
+			<artifactId>xhome-util</artifactId>
 			<version>${xhome-util.version}</version>
 		</dependency>
 		<dependency>
