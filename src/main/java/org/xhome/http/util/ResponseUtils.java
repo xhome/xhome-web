@@ -1,4 +1,4 @@
-package org.xhome.http;
+package org.xhome.http.util;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,53 +7,35 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
+
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.xhome.util.RandomUtils;
-import org.xhome.util.StringUtils;
 
 /**
- * @project jwc
+ * @project xhome-http
  * @author jhat
  * @email cpf624@126.com
- * @date Dec 22, 20129:43:47 PM
+ * @date Aug 13, 201311:02:00 PM
+ * @description 
  */
-public class HttpUtils {
+public class ResponseUtils {
 	
-	public static Object getSessionAttribute(HttpServletRequest request, String name) {
-		return getSessionAttribute(request, name, false);
-	}
-	
-	public static Object getSessionAttribute(HttpServletRequest request, String name, boolean remove) {
-		HttpSession session = request.getSession();
-		Object result = session.getAttribute(name);
-		if (remove) {
-			session.removeAttribute(name);
-		}
-		return result;
-	}
-	
-	public static void setSessionAttribute(HttpServletRequest request, String name, Object value) {
-		HttpSession session = request.getSession();
-		if (value != null) {
-			session.setAttribute(name, value);
-		} else {
-			session.removeAttribute(name);
-		}
-	}
-	
-	public static void removeSessionAttribute(HttpServletRequest request, String name) {
-		HttpSession session = request.getSession();
-		session.removeAttribute(name);
-	}
-	
+	/**
+	 * 使浏览器返回上一页
+	 * @param response
+	 */
 	public static void goBack(HttpServletResponse response) {
 		goHistory(response, -1);
 	}
 	
+	/**
+	 * 使浏览器返回历史页面
+	 * @param response
+	 * @param history 负数后退，正数前进
+	 */
 	public static void goHistory(HttpServletResponse response, int history) {
 		PrintWriter out = null;
 		try {
@@ -70,17 +52,13 @@ public class HttpUtils {
 		}
 	}
 	
-	public static String getRequestAddress(HttpServletRequest request) {
-		String ip = request.getHeader("X-Real-IP");
-		if (StringUtils.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getHeader("X-Forwarded-For");
-		}
-		if (StringUtils.isEmpty(ip) || "unknown".equalsIgnoreCase(ip)) {
-			ip = request.getRemoteAddr();
-		}
-		return ip;
-	}
-	
+	/**
+	 * 相应随机验证码
+	 * @param request
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 */
 	public static String responseAuthCode(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		response.setContentType("image/jpeg");
 		//设置页面不缓存
@@ -141,5 +119,5 @@ public class HttpUtils {
 		int b = fc + random.nextInt(bc - fc);
 		return new Color(r, g, b);
 	}
-	
+
 }

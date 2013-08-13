@@ -8,8 +8,8 @@
 	<name>xhome-http</name>
 
 	<properties>
-		<slf4j-api.version>1.7.5</slf4j-api.version>
 		<xhome-util.version>1.0</xhome-util.version>
+		<xhome-common.version>1.0</xhome-common.version>
 		<javax.servlet.version>2.5</javax.servlet.version>
 		<junit.version>4.11</junit.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,18 +18,17 @@
 	</properties>
 
 	<dependencies>
-		<!-- 
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j-api.version}</version>
-		</dependency>
-		 -->
 		<dependency>
 			<groupId>org.xhome</groupId>
 			<artifactId>xhome-util</artifactId>
 			<version>${xhome-util.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.xhome</groupId>
+			<artifactId>xhome-common</artifactId>
+			<version>${xhome-common.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
