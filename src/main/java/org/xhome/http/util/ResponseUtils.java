@@ -7,12 +7,13 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
-
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import org.xhome.common.constant.Status;
+import org.xhome.http.response.Result;
 import org.xhome.util.RandomUtils;
+import com.google.gson.Gson;
 
 /**
  * @project xhome-http
@@ -22,6 +23,40 @@ import org.xhome.util.RandomUtils;
  * @description 
  */
 public class ResponseUtils {
+	
+	public static void responseJSON(HttpServletResponse response, short status, String message, Object data) throws IOException {
+		response.addHeader("Content-Type", "application/json");
+		String json = new Gson().toJson(data);
+		if (json != null && json.startsWith("{")) {
+			response.getWriter().print("{status: " + status + ", message: " + message + ", " + json.substring(1));
+		} else {
+			response.getWriter().print("{status: " + status + ", message: " + message + ", data: " + json + "}");
+		}
+	}
+	
+	public static void responseJSON(HttpServletResponse response, String message, Object data) throws IOException {
+		responseJSON(response, Status.SUCCESS, message, data);
+	}
+	
+	public static void responseJSON(HttpServletResponse response, short status, Object data) throws IOException {
+		response.addHeader("Content-Type", "application/json");
+		String json = new Gson().toJson(data);
+		if (json != null && json.startsWith("{")) {
+			response.getWriter().print("{status: " + status + ", " + json.substring(1));
+		} else {
+			response.getWriter().print("{status: " + status + ", data: " + json + "}");
+		}
+	}
+	
+	public static void responseJSON(HttpServletResponse response, Result data) throws IOException {
+		response.addHeader("Content-Type", "application/json");
+		response.getWriter().print(new Gson().toJson(data));
+	}
+	
+	public static void responseJSON(HttpServletResponse response, Object data) throws IOException {
+		response.addHeader("Content-Type", "application/json");
+		response.getWriter().print(new Gson().toJson(data));
+	}
 	
 	/**
 	 * 使浏览器返回上一页
@@ -59,7 +94,7 @@ public class ResponseUtils {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String responseAuthCode(HttpServletRequest request,HttpServletResponse response) throws IOException{
+	public static String responseAuthCode(HttpServletRequest request,HttpServletResponse response) throws IOException {
 		response.setContentType("image/jpeg");
 		//设置页面不缓存
 		response.setHeader("Pragma","No-cahe");
@@ -108,7 +143,7 @@ public class ResponseUtils {
 	}
 	
 
-	private static Color getRandColor(int fc,int bc){
+	private static Color getRandColor(int fc,int bc) {
 		Random random =new Random();
 		if(fc>255)
 			fc=255;
