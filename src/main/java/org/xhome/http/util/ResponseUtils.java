@@ -27,7 +27,6 @@ public class ResponseUtils {
 	public static void responseJSON(HttpServletResponse response, short status, String message, Object data) throws IOException {
 		response.setContentType("application/json; charset=UTF-8");
 		String json = new Gson().toJson(data);
-		System.out.println(json);
 		if (json != null && json.startsWith("{")) {
 			response.getWriter().print("{\"status\":" + status + ",\"message\":\"" + message + "\"," + json.substring(1));
 		} else {
@@ -47,6 +46,11 @@ public class ResponseUtils {
 		} else {
 			response.getWriter().print("{\"status\":" + status + ",\"data\":" + json + "}");
 		}
+	}
+	
+	public static void responseJSON(HttpServletResponse response, short status, String message) throws IOException {
+		response.setContentType("application/json; charset=UTF-8");
+		response.getWriter().print("{\"status\":" + status + ",\"message\":\"" + message + "\"}");
 	}
 	
 	public static void responseJSON(HttpServletResponse response, Result data) throws IOException {
