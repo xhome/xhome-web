@@ -15,12 +15,21 @@ import org.xhome.util.StringUtils;
 public class RequestUtils {
 	
 	/**
-	 * 获取浏览器类型
+	 * 获取客户端名称
+	 * @param request
+	 * @return
+	 */
+	public static String getRequestUserAgent(HttpServletRequest request) {
+		return request.getHeader("User-Agent");
+	}
+	
+	/**
+	 * 获取客户端类型
 	 * @param request
 	 * @return
 	 */
 	public static short getRequestAgent(HttpServletRequest request) {
-		String userAgent = request.getHeader("User-Agent");
+		String userAgent = getRequestUserAgent(request);
 		if (userAgent == null) {
 			return Agent.OTHER;
 		}
