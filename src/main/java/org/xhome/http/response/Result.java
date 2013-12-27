@@ -66,4 +66,8 @@ public class Result implements Serializable {
 		return data;
 	}
 	
+	public boolean isSuccess() {
+		return this.status == Status.SUCCESS;
+	}
+	
 }
