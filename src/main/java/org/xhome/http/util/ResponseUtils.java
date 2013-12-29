@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.xhome.common.constant.Status;
-import org.xhome.http.response.Result;
+import org.xhome.http.response.CommonResult;
 import org.xhome.util.RandomUtils;
 import com.google.gson.Gson;
 
@@ -53,7 +53,7 @@ public class ResponseUtils {
 		response.getWriter().print("{\"status\":" + status + ",\"message\":\"" + message + "\"}");
 	}
 	
-	public static void responseJSON(HttpServletResponse response, Result data) throws IOException {
+	public static void responseJSON(HttpServletResponse response, CommonResult data) throws IOException {
 		response.setContentType("application/json; charset=UTF-8");
 		response.getWriter().print(new Gson().toJson(data));
 	}
