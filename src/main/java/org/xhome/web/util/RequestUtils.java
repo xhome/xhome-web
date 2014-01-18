@@ -1,4 +1,4 @@
-package org.xhome.http.util;
+package org.xhome.web.util;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,7 +6,7 @@ import org.xhome.common.constant.Agent;
 import org.xhome.util.StringUtils;
 
 /**
- * @project xhome-http
+ * @project xhome-web
  * @author jhat
  * @email cpf624@126.com
  * @date Aug 13, 201311:02:00 PM

@@ -2,10 +2,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.xhome</groupId>
-    <artifactId>xhome-http</artifactId>
+    <artifactId>xhome-web</artifactId>
     <packaging>jar</packaging>
     <version>1.0</version>
-    <name>xhome-http</name>
+    <name>xhome-web</name>
 
     <properties>
         <xhome-db.version>1.0</xhome-db.version>
@@ -61,7 +61,7 @@
     </dependencies>
 
     <build>
-        <finalName>xhome-http-${project.version}</finalName>
+        <finalName>xhome-web-${project.version}</finalName>
         <pluginManagement>
             <plugins>
                 <plugin>

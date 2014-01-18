@@ -1,11 +1,11 @@
-package org.xhome.http.response;
+package org.xhome.web.response;
 
 import java.util.List;
 import java.util.Map;
 import org.xhome.db.query.QueryBase;
 
 /**
- * @project xhome-http
+ * @project xhome-web
  * @author 	jhat
  * @email 	cpf624@126.com
  * @date 	Dec 29, 20138:40:50 PM

@@ -1,11 +1,11 @@
-package org.xhome.http.response;
+package org.xhome.web.response;
 
 import java.io.Serializable;
 
 import org.xhome.common.constant.Status;
 
 /**
- * @project xhome-http
+ * @project xhome-web
  * @author 	jhat
  * @email 	cpf624@126.com
  * @date 	Dec 29, 20138:34:24 PM

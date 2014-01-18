@@ -1,7 +1,7 @@
-package org.xhome.http.response;
+package org.xhome.web.response;
 
 /**
- * @project xhome-http
+ * @project xhome-web
  * @author jhat
  * @email cpf624@126.com
  * @date Aug 13, 201310:57:05 PM

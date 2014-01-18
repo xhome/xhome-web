@@ -1,4 +1,4 @@
-package org.xhome.http.util;
+package org.xhome.web.util;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -7,16 +7,19 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
+
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.xhome.common.constant.Status;
-import org.xhome.http.response.CommonResult;
 import org.xhome.util.RandomUtils;
+import org.xhome.web.response.CommonResult;
+
 import com.google.gson.Gson;
 
 /**
- * @project xhome-http
+ * @project xhome-web
  * @author jhat
  * @email cpf624@126.com
  * @date Aug 13, 201311:02:00 PM
