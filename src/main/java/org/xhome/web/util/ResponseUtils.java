@@ -16,7 +16,7 @@ import org.xhome.common.constant.Status;
 import org.xhome.util.RandomUtils;
 import org.xhome.web.response.CommonResult;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @project xhome-web
@@ -29,7 +29,8 @@ public class ResponseUtils {
 	
 	public static void responseJSON(HttpServletResponse response, short status, String message, Object data) throws IOException {
 		response.setContentType("application/json; charset=UTF-8");
-		String json = new Gson().toJson(data);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String json = objectMapper.writeValueAsString(data);
 		if (json != null && json.startsWith("{")) {
 			response.getWriter().print("{\"status\":" + status + ",\"message\":\"" + message + "\"," + json.substring(1));
 		} else {
@@ -43,7 +44,8 @@ public class ResponseUtils {
 	
 	public static void responseJSON(HttpServletResponse response, short status, Object data) throws IOException {
 		response.setContentType("application/json; charset=UTF-8");
-		String json = new Gson().toJson(data);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String json = objectMapper.writeValueAsString(data);
 		if (json != null && json.startsWith("{")) {
 			response.getWriter().print("{\"status\":" + status + "," + json.substring(1));
 		} else {
@@ -58,12 +60,16 @@ public class ResponseUtils {
 	
 	public static void responseJSON(HttpServletResponse response, CommonResult data) throws IOException {
 		response.setContentType("application/json; charset=UTF-8");
-		response.getWriter().print(new Gson().toJson(data));
+		ObjectMapper objectMapper = new ObjectMapper();
+		String json = objectMapper.writeValueAsString(data);
+		response.getWriter().print(json);
 	}
 	
 	public static void responseJSON(HttpServletResponse response, Object data) throws IOException {
 		response.setContentType("application/json; charset=UTF-8");
-		response.getWriter().print(new Gson().toJson(data));
+		ObjectMapper objectMapper = new ObjectMapper();
+		String json = objectMapper.writeValueAsString(data);
+		response.getWriter().print(json);
 	}
 	
 	/**
