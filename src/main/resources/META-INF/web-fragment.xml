@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-fragment version="3.0" metadata-complete="true"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		http://java.sun.com/xml/ns/javaee/web-fragment_3_0.xsd">
+
+	<name>fragment_xweb</name>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/404.htm</location>
+    </error-page>
+
+    <error-page>
+        <error-code>503</error-code>
+        <location>/503.htm</location>
+    </error-page>
+
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error.htm</location>
+    </error-page>
+
+    <welcome-file-list>
+        <welcome-file>/index.htm</welcome-file> 
+    </welcome-file-list>
+
+	<ordering>
+		<before>
+			<others />
+		</before>
+	</ordering>
+
+</web-fragment>
