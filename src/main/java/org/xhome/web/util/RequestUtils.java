@@ -10,30 +10,43 @@ import org.xhome.util.StringUtils;
  * @author jhat
  * @email cpf624@126.com
  * @date Aug 13, 201311:02:00 PM
- * @description 
+ * @description
  */
 public class RequestUtils {
-	
+
+	/**
+	 * 获取请求路径（去除ContextPath）
+	 * 
+	 * @param request
+	 * @return
+	 */
+	public static String getRequestURI(HttpServletRequest request) {
+		String context = request.getContextPath();
+		return request.getRequestURI().substring(context.length());
+	}
+
 	/**
 	 * 获取客户端名称
+	 * 
 	 * @param request
 	 * @return
 	 */
-	public static String getRequestUserAgent(HttpServletRequest request) {
+	public static String getRequestUserAgentName(HttpServletRequest request) {
 		return request.getHeader("User-Agent");
 	}
-	
+
 	/**
 	 * 获取客户端类型
+	 * 
 	 * @param request
 	 * @return
 	 */
-	public static short getRequestAgent(HttpServletRequest request) {
-		String userAgent = getRequestUserAgent(request);
+	public static short getRequestUserAgent(HttpServletRequest request) {
+		String userAgent = getRequestUserAgentName(request);
 		if (userAgent == null) {
 			return Agent.OTHER;
 		}
-		
+
 		userAgent = userAgent.toLowerCase();
 		if (userAgent.contains("msie")) {
 			return Agent.IE;
@@ -47,12 +60,13 @@ public class RequestUtils {
 		if (userAgent.contains("safari")) {
 			return Agent.SAFARI;
 		}
-		
+
 		return Agent.OTHER;
 	}
-	
+
 	/**
 	 * 获取客户端IP地址
+	 * 
 	 * @param request
 	 * @return
 	 */
@@ -66,5 +80,5 @@ public class RequestUtils {
 		}
 		return ip;
 	}
-	
+
 }
