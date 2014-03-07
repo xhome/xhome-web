@@ -19,8 +19,9 @@ public class CommonAction extends AbstractAction {
 	public final static String RM_INDEX = "index"; // 首页
 	public final static String RM_ABOUT = "about"; // 关于页面
 
+	public final static String RM_401 = "401"; // 无权访问
 	public final static String RM_404 = "404"; // 页面不存在
-	public final static String RM_503 = "503"; // 无权访问
+	public final static String RM_503 = "503"; // 无法访问
 	public final static String RM_ERROR = "error"; // 系统异常
 
 	/**
@@ -51,6 +52,16 @@ public class CommonAction extends AbstractAction {
 	@RequestMapping(value = RM_ABOUT, method = RequestMethod.GET)
 	public Object aboutPage() {
 		return RM_ABOUT;
+	}
+
+	/**
+	 * 无权访问提示页面
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = RM_401, method = RequestMethod.GET)
+	public Object page401() {
+		return RM_401;
 	}
 
 	/**

@@ -6,6 +6,11 @@
 
 	<name>fragment_xweb</name>
 
+	<error-page>
+        <error-code>401</error-code>
+        <location>/401.htm</location>
+    </error-page>
+
     <error-page>
         <error-code>404</error-code>
         <location>/404.htm</location>

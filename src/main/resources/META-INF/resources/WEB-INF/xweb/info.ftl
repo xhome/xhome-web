@@ -25,7 +25,7 @@
     <div id="wrapper">
         <div class="center">
             <h1>${prompt}</h1> 
-            <a href="${base_url}/index.htm">返回首页</a> 
+            <a href="${base_url}">返回首页</a> 
         </div>
     </div>
     <div id="footer" class="center">
