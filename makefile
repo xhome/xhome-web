@@ -1,7 +1,7 @@
 install:package
 	mvn install -Dmaven.test.skip=true
 push:
-	hg push https://scm.xhomestudio.org/xhome/xhome-http
+	hg push https://scm.xhomestudio.org/xhome/xhome-web
 package:clean
 	mvn package -Dmaven.test.skip=true
 clean:
