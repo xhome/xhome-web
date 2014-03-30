@@ -4,7 +4,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
 import org.xhome.common.constant.Agent;
-import org.xhome.util.StringUtils;
+import org.xhome.common.util.StringUtils;
 
 /**
  * @project xhome-web

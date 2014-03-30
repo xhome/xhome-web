@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.xhome.common.constant.Status;
-import org.xhome.util.RandomUtils;
+import org.xhome.common.util.RandomUtils;
 import org.xhome.web.response.CommonResult;
 
 import com.fasterxml.jackson.databind.ObjectMapper;

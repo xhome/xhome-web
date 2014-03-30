@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import org.springframework.stereotype.Component;
-import org.xhome.util.StringUtils;
+import org.xhome.common.util.StringUtils;
 
 import freemarker.cache.TemplateLoader;
 import freemarker.core.Environment;
