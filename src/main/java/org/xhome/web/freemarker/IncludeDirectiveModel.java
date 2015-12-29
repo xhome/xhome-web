@@ -42,6 +42,8 @@ import freemarker.template.TemplateScalarModel;
 @Component
 public class IncludeDirectiveModel implements TemplateDirectiveModel {
 
+	public final static String DIRECTIVE_NAME = "include";
+
 	@SuppressWarnings("rawtypes")
 	@Override
 	public void execute(Environment env, Map params, TemplateModel[] loopVars,

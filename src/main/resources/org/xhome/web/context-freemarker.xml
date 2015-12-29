@@ -5,6 +5,10 @@
 		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<bean id="includeDirectiveModel" class="org.xhome.web.freemarker.IncludeDirectiveModel" />
+	<bean id="blockDirectiveModel" class="org.xhome.web.freemarker.BlockDirectiveModel" />
+	<bean id="extendsDirectiveModel" class="org.xhome.web.freemarker.ExtendsDirectiveModel" />
+	<bean id="overrideDirectiveModel" class="org.xhome.web.freemarker.OverrideDirectiveModel" />
+	<bean id="superDirectiveModel" class="org.xhome.web.freemarker.SuperDirectiveModel" />
 	
 	<bean id="beansWrapperInstance" class="freemarker.ext.beans.BeansWrapper" factory-method="getDefaultInstance" />
 

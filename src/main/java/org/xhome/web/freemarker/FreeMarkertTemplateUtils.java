@@ -5,10 +5,15 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.Map;
 
+import org.xhome.common.util.StringUtils;
+import org.xhome.web.freemarker.OverrideDirectiveModel.TemplateDirectiveBodyOverrideWraper;
+
+import freemarker.core.Environment;
 import freemarker.template.Configuration;
 import freemarker.template.DefaultObjectWrapper;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import freemarker.template.TemplateModelException;
 
 /**
  * @project xauth-web
@@ -18,7 +23,13 @@ import freemarker.template.TemplateException;
  * @date Feb 12, 2014
  * @describe 模板工具类
  */
-public abstract class FreeMarkertTemplateUtils {
+public class FreeMarkertTemplateUtils {
+
+	public final static String BLOCK = "__ftl_override__";
+	public final static String OVERRIDE_CURRENT_NODE = "__ftl_override_current_node";
+
+	private FreeMarkertTemplateUtils() {
+	}
 
 	/**
 	 * @param templatePath
@@ -61,6 +72,58 @@ public abstract class FreeMarkertTemplateUtils {
 	public static void processTemplate(String templatePath,
 			String templateName, Map<?, ?> root, Writer out) {
 		processTemplate(templatePath, templateName, "UTF-8", root, out);
+	}
+
+	public static String getOverrideVariableName(String name) {
+		return BLOCK + name;
+	}
+
+	@SuppressWarnings("rawtypes")
+	public static String getRequiredParam(Map params, String key)
+			throws TemplateException {
+		Object value = params.get(key);
+		if (value == null || StringUtils.isEmpty(value.toString())) {
+			throw new TemplateModelException("not found required parameter:"
+					+ key + " for directive");
+		}
+		return value.toString();
+	}
+
+	@SuppressWarnings("rawtypes")
+	public static String getParam(Map params, String key, String defaultValue)
+			throws TemplateException {
+		Object value = params.get(key);
+		return value == null ? defaultValue : value.toString();
+	}
+
+	public static TemplateDirectiveBodyOverrideWraper getOverrideBody(
+			Environment env, String name) throws TemplateModelException {
+		TemplateDirectiveBodyOverrideWraper value = (TemplateDirectiveBodyOverrideWraper) env
+				.getVariable(getOverrideVariableName(name));
+		return value;
+	}
+
+	public static void setTopBodyForParentBody(Environment env,
+			TemplateDirectiveBodyOverrideWraper topBody,
+			TemplateDirectiveBodyOverrideWraper overrideBody) {
+		TemplateDirectiveBodyOverrideWraper parent = overrideBody;
+		while (parent.parentBody != null) {
+			parent = parent.parentBody;
+		}
+		parent.parentBody = topBody;
+	}
+
+	public static void eaxposeAllMacros(Configuration conf) {
+		conf.setSharedVariable(IncludeDirectiveModel.DIRECTIVE_NAME,
+				new IncludeDirectiveModel());
+		conf.setSharedVariable(BlockDirectiveModel.DIRECTIVE_NAME,
+				new BlockDirectiveModel());
+		conf.setSharedVariable(ExtendsDirectiveModel.DIRECTIVE_NAME,
+				new ExtendsDirectiveModel());
+		conf.setSharedVariable(OverrideDirectiveModel.DIRECTIVE_NAME,
+				new OverrideDirectiveModel());
+		conf.setSharedVariable(SuperDirectiveModel.DIRECTIVE_NAME,
+				new SuperDirectiveModel());
 	}
 
 }
